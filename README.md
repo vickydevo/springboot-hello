@@ -19,7 +19,8 @@
 
 ```bash
 git clone https://github.com/vickydevo/springboot-hello.git
-cd pring-boot-hello
+cd springboot-hello
+
 ```
 
 ## Build Maven Artifact:
