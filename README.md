@@ -18,7 +18,7 @@
 ## Clone code from github:
 
 ```bash
-git clone https://github.com/Naresh240/springboot-hello.git
+git clone https://github.com/vickydevo/springboot-hello.git
 cd pring-boot-hello
 ```
 
