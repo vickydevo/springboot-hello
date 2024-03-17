@@ -4,6 +4,13 @@
 
 ```bash
 - Install Java
+        yum list installed | grep java
+        sudo yum remove <package-name>
+        sudo yum install java-1.8.0-amazon-corretto
+        sudo update-alternatives --config java
+
+
+
 - Install GIT
 - Install Maven
 ```
