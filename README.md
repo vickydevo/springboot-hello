@@ -33,6 +33,8 @@ mvn clean install
 
 ```bash
 java -jar gs-spring-boot-0.1.0.jar
+
+http://localhost:8080/
 ```
 
 ## If you want to run ```Dockerfile-with-ARG-ENV file```
