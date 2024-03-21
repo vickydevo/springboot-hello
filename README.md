@@ -3,12 +3,19 @@
 ## Pre-requisites:
 
 ```bash
-- Install Java
+- Install Java amazon linux
+         java --version
         yum list installed | grep java
         sudo yum remove <package-name>
         sudo yum install java-1.8.0-amazon-corretto
-        sudo update-alternatives --config java
+        sudo update-alternatives --config java  # change the java version
 
+- Install Java ubuntu linux
+        java -version
+       sudo apt install openjdk-8-jre-headless
+        sudo apt remove <openjdk-8-jre-headless>
+        update-java-alternatives --list
+        update-java-alternatives --list
 
 
 - Install GIT
