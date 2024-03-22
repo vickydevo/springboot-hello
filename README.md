@@ -1,5 +1,7 @@
 # spring-boot-hello..!!!
-line1
+line1 
+line2
+line3
 ## Pre-requisites:
 
 ```bash
