@@ -23,30 +23,30 @@ COPY target/your-app.jar /opt/
 ENTRYPOINT ["java", "-jar", "/opt/your-app.jar"]
 
 --------------------------------------------------------
-# Use Amazon Linux 2 as the base image
-FROM amazonlinux:2
+# # Use Amazon Linux 2 as the base image
+# FROM amazonlinux:2
 
-# Set the maintainer
-LABEL maintainer="Your Name <your.email@example.com>"
+# # Set the maintainer
+# LABEL maintainer="Your Name <your.email@example.com>"
 
-# Set the working directory
-WORKDIR /opt
+# # Set the working directory
+# WORKDIR /opt
 
-# Install OpenJDK 8
-RUN amazon-linux-extras install java-openjdk8 -y
+# # Install OpenJDK 8
+# RUN amazon-linux-extras install java-openjdk8 -y
 
-# Install Maven and other dependencies
-RUN yum install -y maven \
-    && yum clean all
+# # Install Maven and other dependencies
+# RUN yum install -y maven \
+#     && yum clean all
 
-# Copy all files from the Spring Boot app directory to the container
-COPY . /opt/
+# # Copy all files from the Spring Boot app directory to the container
+# COPY . /opt/
 
-# Run multiple commands
-RUN mvn clean install
+# # Run multiple commands
+# RUN mvn clean install
 
-# Copy the newly created JAR file to the current directory
-COPY target/your-app.jar /opt/
+# # Copy the newly created JAR file to the current directory
+# COPY target/your-app.jar /opt/
 
-# Set the entry point to run the Java application
-ENTRYPOINT ["java", "-jar", "/opt/your-app.jar"]
+# # Set the entry point to run the Java application
+# ENTRYPOINT ["java", "-jar", "/opt/your-app.jar"]
