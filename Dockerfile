@@ -8,21 +8,22 @@ LABEL maintainer="Your Name <your.email@example.com>"
 WORKDIR /opt
 
 # Copy all files from the Spring Boot app directory to the container
-COPY . /opt/
+ADD . /opt
 
 # Run multiple commands
 RUN apt-get update \
     && apt-get install -y maven \
     && mvn clean install \
     && rm -rf /var/lib/apt/lists/*
+    
 
 # Copy the newly created JAR file to the current directory
-COPY target/your-app.jar /opt/
+COPY ./target/*.jar /opt
 
 # Set the entry point to run the Java application
-ENTRYPOINT ["java", "-jar", "/opt/your-app.jar"]
+ENTRYPOINT ["java", "-jar", "/opt/gs-spring-boot-0.1.0.jar"]
 
---------------------------------------------------------
+# --------------------------------------------------------
 # # Use Amazon Linux 2 as the base image
 # FROM amazonlinux:2
 

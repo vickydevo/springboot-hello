@@ -8,7 +8,7 @@ public class HelloController {
     
     @RequestMapping("/")
     public String index() {
-        return "Greetings from devops 2..!!!";
+        return "Greetings from synchro_serve   deployed in virtual Machine..!!!";
     }
     
 }
