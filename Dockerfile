@@ -18,10 +18,10 @@ RUN apt-get update \
     
 
 # Copy the newly created JAR file to the current directory
-COPY ./target/*.jar /opt
+# COPY ./target/*.jar /opt
 
 # Set the entry point to run the Java application
-ENTRYPOINT ["java", "-jar", "/opt/gs-spring-boot-0.1.0.jar"]
+ENTRYPOINT ["java", "-jar", "/opt/target/gs-spring-boot-0.1.0.jar"]
 
 # --------------------------------------------------------
 # # Use Amazon Linux 2 as the base image
