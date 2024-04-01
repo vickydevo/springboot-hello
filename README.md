@@ -17,7 +17,7 @@ line3
        sudo apt install openjdk-8-jre-headless
         sudo apt remove <openjdk-8-jre-headless>
         update-java-alternatives --list
-        update-java-alternatives --list
+        sudo update-alternatives --config java
 
 
 - Install GIT
