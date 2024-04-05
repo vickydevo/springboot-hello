@@ -23,9 +23,15 @@ RUN apt-get update \
 # Set the entry point to run the Java application
 ENTRYPOINT ["java", "-jar", "/opt/target/gs-spring-boot-0.1.0.jar"]
 
+<<<<<<< HEAD
+--------------------------------------------------------
+# # Use Amazon Linux 2 as the base image
+# FROM amazonlinux:2
+=======
 # --------------------------------------------------------
 # # Use Amazon Linux 2 as the base image
 # FROM amazonlinux:2
+>>>>>>> c91db6fa082cea92db8396b5dd344509f763b37b
 
 # # Set the maintainer
 # LABEL maintainer="Your Name <your.email@example.com>"
@@ -50,4 +56,4 @@ ENTRYPOINT ["java", "-jar", "/opt/target/gs-spring-boot-0.1.0.jar"]
 # COPY target/your-app.jar /opt/
 
 # # Set the entry point to run the Java application
-# ENTRYPOINT ["java", "-jar", "/opt/your-app.jar"]
+# ENTRYPOINT ["java", "-jar", ""java", "-jar", "/opt/target/gs-spring-boot-0.1.0.jar""]
