@@ -21,7 +21,7 @@ public class HelloController {
         }
 
         // Return the greeting message with the IPv4 address
-        return "Greetings from vignan deployed in virtual Machine..!!! Host IPv4 Address: " + ipAddress;
+        return "Greetings from  'VIGNAN' deployed in virtual Machine..!!! Host IPv4 Address: " + ipAddress;
     }
     
 }
