@@ -1,24 +1,24 @@
-# spring-boot-hello..!!!
-line1 
-line2
-line3
+# Deploy JAVA application spring-boot-hello in ec2 amazon linux/ubuntu instance..!!!
+
 ## Pre-requisites:
 
-```bash
+
 - Install Java17 amazon linux 
-         java --version
+ ```bash
+   java --version
         yum list installed | grep java
         sudo yum remove <package-name>
         sudo yum install java-17-amazon-corretto
         sudo update-alternatives --config java  # change the java version
-
+```
 - Install Java ubuntu linux
+  ```
         java -version
        sudo apt install openjdk-17-jre-headless
         sudo apt remove <openjdk-8-jre-headless>
         update-java-alternatives --list
         sudo update-alternatives --config java
-
+```
 
 - Install GIT
 - Install Maven
