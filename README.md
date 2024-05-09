@@ -3,6 +3,15 @@
 ## Pre-requisites:
 
 
+- Install GIT
+  ```
+  sudo yum install git -y
+  ```
+- Install Maven
+```
+sudo yum install maven -y
+```
+
 - Install Java17 amazon linux 
  ```bash
    java --version
@@ -18,11 +27,7 @@
         sudo apt remove <openjdk-8-jre-headless>
         update-java-alternatives --list
         sudo update-alternatives --config java
-```
 
-- Install GIT
-- Install Maven
-```
 
 ## Clone code from github:
 
