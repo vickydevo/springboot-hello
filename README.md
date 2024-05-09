@@ -37,7 +37,7 @@ cd springboot-hello
 
 ```
 
-## Build Maven Artifact:
+## Build Maven Artifact:  below cmd can be done only when pom.xml is present
 
 ```bash
 mvn clean install
@@ -47,8 +47,8 @@ mvn clean install
 
 ```bash
 java -jar gs-spring-boot-0.1.0.jar
-
-http://localhost:8080/
+http://public-ip:8080
+http://localhost:8080
 ```
 
 ## If you want to run ```Dockerfile-with-ARG-ENV file```
