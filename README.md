@@ -46,6 +46,7 @@ mvn clean install
 ## Deploy springboot application:
 
 ```bash
+cd target
 java -jar gs-spring-boot-0.1.0.jar
 http://public-ip:8080
 http://localhost:8080
