@@ -48,6 +48,13 @@ mvn clean install
 ```bash
 cd target
 java -jar gs-spring-boot-0.1.0.jar
+
+# Run the application using nohup and &:
+nohup java -jar gs-spring-boot-0.1.0.jar > output.log 2>&1 &
+# List Java processes:
+ps aux | grep java
+jobs
+
 http://public-ip:8080
 http://localhost:8080
 ```
