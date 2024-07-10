@@ -15,7 +15,13 @@ pipeline {
         }//stage2 
         stage ('DOCKER BUILD') {
             steps {
-                sh "docker build -t spring-boot . "
+                sh '''
+                docker build -t spring-boot:v1 .
+                docker tag spring-boot:v1 vignan91/spring-boot:v1
+                echo "######################################"
+                echo "     DOCKER TAG IS COMPLETED             "
+                echo "######################################"
+                '''
             }
         }// stage3
         stage ('DOCKER LOGIN PUSH') {
@@ -23,7 +29,13 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh '''
                     echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
-                    docker push spring-boot
+                     echo "######################################"
+                     echo "     DOCKER LOGIN IS COMPLETED             "
+                     echo "######################################"
+                     docker push vignan91/spring-boot:v1
+                     echo "######################################"
+                     echo "     DOCKER PUSH IS COMPLETED             "
+                     echo "######################################"
                     '''
                 }
             }
