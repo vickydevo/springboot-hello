@@ -8,8 +8,10 @@ pipeline {
         }// stage1
         stage ('MAVEN BUILD') {
             steps {
-             sh "cd springboot-hello"
-             sh   "mvn clean install"
+            sh '''
+                cd springboot-hello
+                mvn clean install
+                '''
             }
         }//stage2 
         stage ('DOCKER BUILD') {
@@ -18,12 +20,14 @@ pipeline {
             }
         }// stage3
         stage ('DOCKER LOGIN PUSH') {
-            steps (
+            steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
-                    sh 'docker push spring-boot'
+                    sh '''
+                    echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                    docker push spring-boot
+                    '''
                 }
-            )
+            }
         }// stage4
         // stage ('DOCKER BUILD') {}// stage5
         // stage ('DOCKER LOGIN') {}// stage6
