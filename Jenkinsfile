@@ -9,7 +9,6 @@ pipeline {
         stage ('MAVEN BUILD') {
             steps {
             sh '''
-                cd springboot-hello
                 mvn clean install
                 '''
             }
