@@ -18,7 +18,7 @@ sudo yum install maven -y
         yum list installed | grep java
         sudo yum remove <package-name>
         sudo yum install java-17-amazon-corretto
-        sudo update-alternatives --config java  # change the java version
+        sudo update-alternatives --config java  # change  java version
 ```
 - this is for jenkins integration
   add GIT Executable PATH in jenkins tools configuration that i.e /usr/bin/git
