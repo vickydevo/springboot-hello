@@ -7,7 +7,7 @@
   ```bash
   sudo yum install git -y
   ```
-- Install Maven
+- Install Mave
 ```bash
 sudo yum install maven -y
 ```
