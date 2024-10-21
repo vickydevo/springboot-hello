@@ -1,11 +1,11 @@
 pipeline {
-    agent any
+    agent any 
     stages {
         stage ('GIT CHECKOUT') {
             steps {
                 git url:'https://github.com/vickydevo/springboot-hello.git', branch:'main'
             }
-        }// stage1
+        }// stage111
         stage ('MAVEN BUILD') {
             steps {
             sh '''
