@@ -1,48 +1,42 @@
-pipeline {
-    agent any 
-    stages {
-        stage ('GIT CHECKOUT') {
-            steps {
-                git url:'https://github.com/vickydevo/springboot-hello.git', branch:'main'
+pipeline{
+    agent {label 'agent-sai'}
+    stages{
+        stage('GIT CHECKOUT'){
+            steps{
+                git url:"https://github.com/vickydevo/springboot-hello.git", branch:"main"
+                
             }
-        }// stage111
-        stage ('MAVEN BUILD') {
-            steps {
-            sh '''
-                mvn clean install
-                '''
+            
+        }
+        stage('Build_Docker'){
+            steps{
+                sh "sudo docker build -t springboot:latest ."
+                
             }
-        }//stage2 
-        stage ('DOCKER BUILD') {
-            steps {
+            
+        }
+        stage('Docker_push'){
+            steps{
+                
+                withCredentials([usernamePassword(
+                    credentialsId: "dockerhub_cred",
+                    usernameVariable: "DOCKER_USER",
+                    passwordVariable: 'DOCKER_PASS')]){
                 sh '''
-                docker build -t spring-boot:v1 .
-                docker tag spring-boot:v1 vignan91/spring-boot:v1
-                echo "######################################"
-                echo "     DOCKER TAG IS COMPLETED             "
-                echo "######################################"
-                '''
+                echo "$DOCKER_PASS" |sudo docker login -u $DOCKER_USER --password-stdin
+                sudo docker tag springboot:latest $DOCKER_USER/springboot:latest
+                 sudo docker push $DOCKER_USER/springboot:latest
+              '''  
+                    }
             }
-        }// stage3
-        stage ('DOCKER LOGIN PUSH') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh '''
-                    echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-                     echo "######################################"
-                     echo "     DOCKER LOGIN IS COMPLETED             "
-                     echo "######################################"
-                     docker push vignan91/spring-boot:v1
-                     echo "######################################"
-                     echo "     DOCKER PUSH IS COMPLETED             "
-                     echo "######################################"
-                    '''
-                }
+            
+        }
+        stage('Deploy'){
+            steps{
+                echo "git clone"
+                
             }
-        }// stage4
-        // stage ('DOCKER BUILD') {}// stage5
-        // stage ('DOCKER LOGIN') {}// stage6
-        // stage ('DOCKER BUILD') {}// stage7
-        // stage ('DOCKER LOGIN') {}// stage8
-    } //stages
-}//pipeline close
+            
+        }
+    }//stages
+}//pipeline
