@@ -1,0 +1,7 @@
+version="3"
+services:
+  name: spring-backend
+  image: vignan91/springboot:latest
+  ports:
+    - "8081:8080"
+  restart: always
