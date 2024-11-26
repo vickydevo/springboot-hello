@@ -21,8 +21,12 @@ public class HelloController {
         }
 
         // Return the greeting message with the IPv4 address
+<<<<<<< HEAD
         return "Greetings from  'vignan' deployed JAVA app in ELASTICBEANSTALK with SINGLE running new version of code 2" + ipAddress;
         
+=======
+        return "Greetings from  'vignan' deployed JAVA app in virtual Machine..!!!Introduced LOADBALANCER Host private IPv4 Address: " + ipAddress;
+>>>>>>> 2ff2d5d1abf4e475d0d813dff6230cce8cdf374f
     }
     
 }
