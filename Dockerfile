@@ -8,7 +8,8 @@ RUN  apt update -y \
     && apt install -y maven
 
 RUN useradd -ms /bin/bash devopsuser \
-    && echo "devopsuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers"
+    && echo "devopsuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 USER devopsuser 
 # Set the working directory
 WORKDIR /home/devopsuser 
