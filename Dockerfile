@@ -13,8 +13,8 @@ WORKDIR /opt
 
 # Install Maven and other dependencies
 RUN  apt update -y \ 
-&& apt install -y maven \
-    && apt clean all
+    && apt install -y maven 
+    
 
 # Copy all files from the Spring Boot app directory to the container
 COPY . /opt
