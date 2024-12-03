@@ -4,15 +4,18 @@ FROM openjdk:24-slim-bullseye
 # Set the maintainer
 LABEL maintainer="Your Name <your.email@example.com>"
 
-RUN useradd -ms /bin/bash devopsuser
+RUN  apt update -y \ 
+    && apt install -y maven
+
+RUN useradd -ms /bin/bash devopsuser \
+    && echo "devopsuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers"
 USER devopsuser 
 # Set the working directory
 WORKDIR /home/devopsuser 
 
 
 # Install Maven and other dependencies
-RUN  apt update -y \ 
-    && apt install -y maven 
+ 
     
 
 # Copy all files from the Spring Boot app directory to the container
