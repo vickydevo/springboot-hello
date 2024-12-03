@@ -12,9 +12,9 @@ WORKDIR /home/devopsuser
 WORKDIR /opt
 
 # Install Maven and other dependencies
-RUN  yum update \ 
-yum install -y maven \
-    && yum clean all
+RUN  apt update -y \ 
+&& apt install -y maven \
+    && apt clean all
 
 # Copy all files from the Spring Boot app directory to the container
 COPY . /opt
