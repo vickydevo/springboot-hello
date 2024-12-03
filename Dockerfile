@@ -6,10 +6,9 @@ LABEL maintainer="Your Name <your.email@example.com>"
 
 RUN useradd -ms /bin/bash devopsuser
 USER devopsuser 
+# Set the working directory
 WORKDIR /home/devopsuser 
 
-# Set the working directory
-WORKDIR /opt
 
 # Install Maven and other dependencies
 RUN  apt update -y \ 
