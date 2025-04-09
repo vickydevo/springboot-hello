@@ -1,68 +1,100 @@
-# Deploy JAVA application spring-boot-hello in ec2 amazon linux/ubuntu instance..!!!
 
-## Pre-requisites:
+# 🚀 Deploy Spring Boot Application on EC2 (Amazon Linux/Ubuntu)
 
+## 🧰 Prerequisites
 
-- Install GIT
-  ```bash
-  sudo yum install git -y
-  ```
-- Install Maven
+### Install Git
 ```bash
+# Amazon Linux
+sudo yum install git -y
+```
+
+### Install Maven
+```bash
+# Amazon Linux
 sudo yum install maven -y
 ```
 
-- Install Java17 amazon linux 
- ```bash
-   java --version
-        yum list installed | grep java
-        sudo yum remove <package-name>
-        sudo yum install java-17-amazon-corretto
-        sudo update-alternatives --config java  # change  java version
+### Install Java 17
+
+#### Amazon Linux
+```bash
+# Check current version
+java --version
+
+# Remove existing Java (if needed)
+yum list installed | grep java
+sudo yum remove <package-name>
+
+# Install Amazon Corretto 17
+sudo yum install java-17-amazon-corretto -y
+
+# Configure default version
+sudo update-alternatives --config java
 ```
-- this is for jenkins integration
-  add GIT Executable PATH in jenkins tools configuration that i.e /usr/bin/git
-- Install Java ubuntu linux
-  ```
-        java -version
-       sudo apt install openjdk-17-jre-headless
-        sudo apt remove <openjdk-8-jre-headless>
-        update-java-alternatives --list
-        sudo update-alternatives --config java
 
+#### Ubuntu
+```bash
+# Install OpenJDK 17
+sudo apt install openjdk-17-jre-headless -y
 
-## Clone code from github:
+# Remove older versions (if any)
+sudo apt remove openjdk-8-jre-headless -y
+
+# Configure default version
+update-java-alternatives --list
+sudo update-alternatives --config java
+```
+
+> **Note:** For Jenkins integration, add the Git executable path `/usr/bin/git` under Jenkins global tool configuration.
+
+---
+
+## ⬇️ Clone GitHub Repository
 
 ```bash
 git clone https://github.com/vickydevo/springboot-hello.git
 cd springboot-hello
-
 ```
 
-## Build Maven Artifact:  below cmd can be done only when pom.xml is present
+---
+
+## 🛠️ Build the Project with Maven
 
 ```bash
 mvn clean install
 ```
 
-## Deploy springboot application:
+---
+
+## 🚀 Deploy the Spring Boot App
 
 ```bash
 cd target
 java -jar gs-spring-boot-0.1.0.jar
+```
 
-# Run the application using nohup and &:
+### Optional: Run in Background
+
+```bash
 nohup java -jar gs-spring-boot-0.1.0.jar > output.log 2>&1 &
-# List Java processes:
 ps aux | grep java
 jobs
+```
 
-http://public-ip:8080
+### Access the Application
+
+```
+http://<your-ec2-public-ip>:8080
 http://localhost:8080
 ```
 
-## If you want to run ```Dockerfile-with-ARG-ENV file```
+---
+
+## 🐳 Run with Dockerfile (ARG & ENV)
 
 ```bash
 docker build -t springboothello:v1 -f Dockerfile-with-ARG-ENV . --build-arg version=0.1.0
 ```
+
+
