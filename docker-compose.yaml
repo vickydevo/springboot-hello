@@ -1,7 +1,8 @@
-version:"3.8"
+version: "3.8"
+
 services:
-  name: springboot-svc
-  image: vignan91/${DOCKER_IMAGE}:${DOCKER_TAG}
-  ports:
-    - "${HOST_PORT}:${CONTAINER_PORT}"
-  restart: always
+  springboot-svc:
+    image: vignan91/${DOCKER_IMAGE}:${DOCKER_TAG}
+    ports:
+      - "${HOST_PORT}:${CONTAINER_PORT}"
+    restart: always
