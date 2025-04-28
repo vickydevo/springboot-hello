@@ -1,8 +1,14 @@
 version: "3.8"
 
 services:
-  springboot-svc:
-    image: vignan91/${DOCKER_IMAGE}:${DOCKER_TAG}
+  # springboot-svc:
+  #   image: vignan91/${DOCKER_IMAGE}:${DOCKER_TAG}
+  #   ports:
+  #     - "${HOST_PORT}:${CONTAINER_PORT}"
+  #   restart: always
+  javaspring-cont:
+    image: vignan91/java-spring:v1
     ports:
-      - "${HOST_PORT}:${CONTAINER_PORT}"
+      - "8081:8090"
     restart: always
+
