@@ -1,36 +1,30 @@
 pipeline {
     agent any
-
-    parameters {
-        string(name: 'DOCKER_IMAGE', defaultValue: 'java-spring', description: 'Docker image name')
-        string(name: 'DOCKER_TAG', defaultValue: 'v1', description: 'Docker image tag')
-    }
-
     environment {
-        DOCKER_IMAGE = "${params.DOCKER_IMAGE}"
-        DOCKER_TAG = "${params.DOCKER_TAG}"
+        DOCKER_IMAGE = 'java-spring'
+        DOCKER_TAG = 'v1'
     }
 
     stages {
         stage('SCM CHECKOUT') {
             steps {
-                git branch: "main", url: "https://github.com/vickydevo/springboot-hello.git"
+                git branch: 'main', url: 'https://github.com/vickydevo/springboot-hello.git'
             }
         }
 
         stage('Build Artifact') {
             steps {
-                sh "mvn clean package"
+                sh 'mvn clean package'
             }
         }
 
-        stage('Docker Build') {
+        stage('Docker Image') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
             }
         }
 
-        stage('DockerHub Push') {
+        stage('DockerHub push') {
             steps {
                 withCredentials([
                     usernamePassword(
@@ -40,9 +34,9 @@ pipeline {
                     )
                 ]) {
                     sh '''
-                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                    docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} $DOCKER_USER/${DOCKER_IMAGE}:${DOCKER_TAG}
-                    docker push $DOCKER_USER/${DOCKER_IMAGE}:${DOCKER_TAG}
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} $DOCKER_USER/${DOCKER_IMAGE}:${DOCKER_TAG}
+                        docker push $DOCKER_USER/${DOCKER_IMAGE}:${DOCKER_TAG}
                     '''
                 }
             }
