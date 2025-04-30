@@ -1,4 +1,4 @@
-Sure! Here’s the updated `README.md` content with explanations for `ps aux | grep java` and `jobs` included, formatted cleanly for GitHub or any documentation use.
+Sure! Here’s the updated `README.md` content with explanations for `ps aux | grep java` and `jobs` included, formatted cleanly for GitHub or any documentation use
 
 ---
 
