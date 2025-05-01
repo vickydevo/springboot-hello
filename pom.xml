@@ -18,6 +18,8 @@
         <java.version>17</java.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <jacoco.maven.plugin.version>0.8.7</jacoco.maven.plugin.version>
+        <sonar.sources>src/main/java</sonar.sources>
+        <sonar.tests>src/test/java</sonar.tests>
     </properties>
 
     <dependencies>
