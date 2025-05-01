@@ -79,15 +79,6 @@
                 <groupId>org.sonarsource.scanner.maven</groupId> 
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.11.0.3922</version> 
-                <executions>
- <execution>
- <id>sonar</id>
- <goals>
- <goal>sonar</goal>
- </goals>
- <phase>verify</phase>
- </execution>
- </executions>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
