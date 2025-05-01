@@ -73,6 +73,15 @@
                             <goal>merge</goal>
                             <goal>report-aggregate</goal>
                         </goals>
+                        <configuration>
+                            <fileSets>
+                                <fileSet>
+                                    <includes>
+                                        <include>**/target/**/*.exec</include>
+                                    </includes>
+                                </fileSet>
+                            </fileSets>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
