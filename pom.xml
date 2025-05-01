@@ -70,7 +70,7 @@
                         <id>default-aggregate</id>
                         <phase>verify</phase>
                         <goals>
-                            <goal>merge</goal>
+                            <goal>aggregate</goal>
                             <goal>report-aggregate</goal>
                         </goals>
                         <configuration>
