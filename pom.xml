@@ -18,7 +18,6 @@
         <java.version>17</java.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-        <sonar.exclusions>src/main/java/hello/Application.java</sonar.exclusions>
         <sonar.projectName>spring-boot-jacoco-sonar</sonar.projectName>
         <sonar.projectKey>spring-boot-jacoco-sonar</sonar.projectKey>
         <sonar.organization>my-organization</sonar.organization>
