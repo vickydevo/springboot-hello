@@ -1,32 +1,27 @@
-# Use openjdk as the base image
 FROM openjdk:24-slim-bullseye
 
-# Set the maintainer
 LABEL maintainer="Your Name <your.email@example.com>"
 
-RUN  apt update -y \ 
-    && apt install -y maven
+# Install Maven
+USER root
+RUN apt update -y && apt install -y maven
 
+# Create app directory and user
 RUN useradd -ms /bin/bash devopsuser \
-    && echo "devopsuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    && mkdir /home/devopsuser/app \
+    && chown -R devopsuser:devopsuser /home/devopsuser
 
-USER devopsuser 
-# Set the working directory
-WORKDIR /home/devopsuser 
+# Set working directory
+WORKDIR /home/devopsuser/app
 
+# Switch to the new user
+USER devopsuser
 
-# Install Maven and other dependencies
- 
-    
+# Copy all project files into app folder
+COPY --chown=devopsuser:devopsuser . .
 
-# Copy all files from the Spring Boot app directory to the container
-COPY . .
-
-# Run multiple commands
+# Build the application inside the container
 RUN mvn clean package
 
-# Copy the newly created JAR file to the current directory
-#COPY target/your-app.jar /opt/
-
-# Set the entry point to run the Java application
-ENTRYPOINT [ "java", "-jar", "./target/gs-spring-boot-0.1.0.jar" ]
+# Set the entrypoint
+ENTRYPOINT ["java", "-jar", "target/gs-spring-boot-0.1.0.jar"]

@@ -21,7 +21,7 @@ public class HelloController {
         }
 
         // Return the greeting message with the IPv4 address
-        return "Greetings from  'vignan' deployed JAVA app in ELASTICBEANSTALK with SINGLE running new version of code "   + ipAddress;
+        return "JAVA application deployed on EC2 with the latest code version using Jenkins pipeline – from Vignan."   + ipAddress;
         
 
     }
