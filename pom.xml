@@ -26,11 +26,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- Remove org.javassist dependency -->
-        <dependency>
- <groupId>org.javassist</groupId>
- <artifactId>javassist</artifactId>
- </dependency>
-        <dependency>
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>3.28.0-GA</version> <!-- Or any specific version you want -->
+            </dependency>
+
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <scope>test</scope>
