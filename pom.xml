@@ -71,7 +71,6 @@
                         <phase>verify</phase>
                         <goals>
                             <goal>aggregate</goal>
-                            <goal>report-aggregate</goal>
                         </goals>
                         <configuration>
                             <fileSets>
@@ -90,6 +89,15 @@
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.11.0.3922</version>
             </plugin>
+             <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>report-aggregate</id>
+                        <phase>verify</phase>
+                        <goals><goal>report-aggregate</goal></goals></execution></executions></plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
