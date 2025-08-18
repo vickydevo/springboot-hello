@@ -104,6 +104,25 @@ jobs
 - Useful to check if your Spring Boot app is running after using `nohup`.
 
 ---
+### 🛑 Stop the Background Spring Boot App
+
+To stop the app running in the background, use one of these methods:
+
+#### Using job number (if started with `&`):
+
+```bash
+kill %1
+```
+- `%1` refers to the job number shown by `jobs`.
+
+#### Using process ID (PID):
+
+```bash
+kill -9 <PID>
+```
+- Replace `<PID>` with the actual PID from `ps aux | grep java`.
+
+> **Note:** Use `kill -9` for forceful termination if a regular `kill` doesn't work.
 
 ### 🌐 Access the Application on browser
 
