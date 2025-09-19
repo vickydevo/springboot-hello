@@ -1,27 +1,31 @@
-FROM openjdk:24-slim-bullseye
+# --- Multistage build starts here ---
+# Use Maven with Java 24 (Temurin) as the build environment
+FROM maven:3.9.11-eclipse-temurin-24-noble AS stage1
 
-LABEL maintainer="Your Name <your.email@example.com>"
+# Set author label for image metadata
+LABEL AUTHOR="VIGNAN"
 
-# Install Maven
-USER root
-RUN apt update -y && apt install -y maven
+# Set working directory inside the container
+WORKDIR /opt
 
-# Create app directory and user
-RUN useradd -ms /bin/bash devopsuser \
-    && mkdir /home/devopsuser/app \
-    && chown -R devopsuser:devopsuser /home/devopsuser
+# Copy Maven build file and source code into the container
+COPY pom.xml .
+COPY src ./src
 
-# Set working directory
-WORKDIR /home/devopsuser/app
+# Build the application and create a JAR file, skipping tests for faster build
+# This RUN command executes in a temporary container during the build stage
+RUN mvn clean package -DskipTests
 
-# Switch to the new user
-USER devopsuser
+# Use a lightweight Java 21 runtime image for running the application
 
-# Copy all project files into app folder
-COPY --chown=devopsuser:devopsuser . .
+# --- Stage 2 starts here ---
+FROM eclipse-temurin:21
 
-# Build the application inside the container
-RUN mvn clean package
+# Copy the built JAR file from the build stage to the runtime image
+COPY --from=stage1 /opt/target/gs-spring-boot-0.1.0.jar ./app.jar
 
-# Set the entrypoint
-ENTRYPOINT ["java", "-jar", "target/gs-spring-boot-0.1.0.jar"]
+# Expose port 8090 for the application
+EXPOSE 8090
+
+# Set the default command to run the Spring Boot application
+ENTRYPOINT ["java","-jar","app.jar"]
