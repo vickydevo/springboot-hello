@@ -1,8 +1,22 @@
 pipeline {
     agent any
+    tools {
+        git 'git2'
+        maven 'm3'
+        jdk 'jdk17'
+        
+    }
+
+    parameters {
+        string(name: 'image', defaultValue: 'spring-boot', description: 'Enter docker image name')
+        string(name: 'tag', defaultValue: 'v1', description: 'Enter docker image TAG')
+    }
+
     environment {
-        DOCKER_IMAGE = 'java-spring'
-        DOCKER_TAG = 'v1'
+        DOCKER_IMAGE = "${params.image}"
+        DOCKER_TAG = "${params.tag}"
+        // SONAR_HOST_URL = 'http://ec2-18-215-164-93.compute-1.amazonaws.com:9000'
+        // SONAR_AUTH_TOKEN = credentials('squ_71b371877b164d811d4441d58b34a507d806a31a')
     }
 
     stages {
@@ -43,3 +57,4 @@ pipeline {
         }
     }
 }
+
