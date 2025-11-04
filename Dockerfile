@@ -1,7 +1,7 @@
 # --- Multistage build starts here ---
 FROM maven:3.9.11-eclipse-temurin-21 AS build
 
-WORKDIR /app
+WORKDIR /opt
 
 LABEL MAINTAINER="VIGNAN" 
 
@@ -15,9 +15,9 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21
 
 # Copy the built JAR file from the build stage to the runtime image
-COPY --from=stage1 /opt/target/gs-spring-boot-0.1.0.jar ./app.jar
+COPY --from=build /opt/target/gs-spring-boot-0.1.0.jar ./app.jar
 
-# Expose port 8090 for the application
+# Expose port 8081 for the application
 EXPOSE 8081
 
 # Set the default command to run the Spring Boot application
