@@ -18,6 +18,6 @@ public class HelloController {
         }
 
         // Return the greeting message with the IPv4 address
- return "JAVA application deployed on EC2 VM 31-oct 2025... By Vignan. IP Address: " + ipAddress;
+ return "JAVA application deployed on docker 04-Nov... By Vignan. IP Address: " + ipAddress;
     }
 }
