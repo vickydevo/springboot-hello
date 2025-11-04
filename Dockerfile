@@ -12,7 +12,7 @@ RUN mvn clean package -DskipTests
 # Use a lightweight Java 21 runtime image for running the application
 
 # --- Stage 2 starts here ---
-FROM eclipse-temurin:21-slim
+FROM eclipse-temurin:21-jre-slim
 
 # Copy the built JAR file from the build stage to the runtime image
 COPY --from=build /opt/target/gs-spring-boot-0.1.0.jar ./app.jar
